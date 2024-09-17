@@ -38,19 +38,19 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     
     elif valor > 0:
         saldo -= valor
-        extrato += f"saque: \tR$  {valor:.2f}\n"
+        extrato += f"Saque: \tR$  {valor:.2f}\n"
         numero_saques += 1
         print("\n -------Saque realizado com sucesso!-------")
     
     else:
         print("\n****Falha! Valor inválido.****")
     
-    return saldo, extrato   
+    return saldo, extrato, numero_saques 
   
 def exibir_extrato (saldo,/, *, extrato):
     print("\n -------------------- EXTRATO --------------------")
     print("Não houve movimentações!" if not extrato else extrato)
-    print(f"\nSaldo: \tR$ {saldo:.2f}")
+    print(f"\nSaldo: \t\tR$ {saldo:.2f}")
     print("----------------------------------------------------")
 
 def criar_usuario(usuarios):
@@ -106,7 +106,7 @@ def main():
         elif opcao == "s":
             valor = float(input("Digite o valor que deseja sacar: "))
             
-            saldo, extrato = sacar(
+            saldo, extrato, numero_saques = sacar(
                 saldo=saldo,
                 valor=valor,
                 extrato=extrato,
