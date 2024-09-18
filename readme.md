@@ -8,3 +8,7 @@
     2. Depósito: Funcionalidade para adicionar fundos à conta.
     
     3. Extrato: Exibe o histórico de transações realizadas, incluindo saques, depósitos e o saldo atual.
+
+
+## Segundo desafio
+    Esse eu tive que incluir a criação de usuário e conta

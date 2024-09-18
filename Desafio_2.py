@@ -45,7 +45,7 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     else:
         print("\n****Falha! Valor inválido.****")
     
-    return saldo, extrato, numero_saques 
+    return saldo, extrato
   
 def exibir_extrato (saldo,/, *, extrato):
     print("\n -------------------- EXTRATO --------------------")
@@ -73,7 +73,7 @@ def filtrar_usuario(cpf, usuarios):
        usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
        return usuarios_filtrados[0] if usuarios_filtrados else None
 
-def criar_contas(agencia, numero_conta, usuarios):
+def criar_conta(agencia, numero_conta, usuarios):
     cpf = input("Digite o CPF do usuário: ")
     usuario = filtrar_usuario(cpf, usuarios)
     
@@ -95,6 +95,7 @@ def main():
     usuarios = []
     contas = []
     
+    
     while True:
         opcao = menu()
         
@@ -106,7 +107,7 @@ def main():
         elif opcao == "s":
             valor = float(input("Digite o valor que deseja sacar: "))
             
-            saldo, extrato, numero_saques = sacar(
+            saldo, extrato = sacar(
                 saldo=saldo,
                 valor=valor,
                 extrato=extrato,
@@ -122,13 +123,16 @@ def main():
             
         elif opcao == "nc":
             numero_conta = len(contas) + 1
-            conta = criar_contas(AGENCIA, numero_conta, usuarios)
-            
-        if conta:
-            contas.append(conta)
+            conta = criar_conta(AGENCIA, numero_conta, usuarios)
+
+            if conta:
+                contas.append(conta)
             
         elif opcao == "sa":
             break
         
         else:
-            print("Inválido! Por favor escolhe novamente a opção desejada.")    
+            print("Inválido! Por favor escolhe novamente a opção desejada.")
+            
+            
+main()
